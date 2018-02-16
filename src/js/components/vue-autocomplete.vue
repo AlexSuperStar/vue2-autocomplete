@@ -147,6 +147,7 @@
       onAjaxLoaded: Function,
       onShouldGetData: Function,
       onEmpty: Function,
+      value:''
     },
 
     data() {
@@ -155,7 +156,7 @@
         type: "",
         json: [],
         focusList: "",
-        debounceTask: undefined,
+        debounceTask: undefined
       };
     },
 
@@ -174,7 +175,11 @@
         }
       },
       type(newVal, oldVa){
-        if(this.type=='' && this.onEmpty) this.onEmpty();
+            if(this.type=='' && this.onEmpty) this.onEmpty();
+            this.$emit('input',this.type);
+      },
+      value(newVal, oldVa){
+        if(newVal!=this.type)this.type=newVal;
       }
     },
 

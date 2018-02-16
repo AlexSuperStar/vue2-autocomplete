@@ -146,6 +146,7 @@
       onAjaxProgress: Function,
       onAjaxLoaded: Function,
       onShouldGetData: Function,
+      onEmpty: Function,
     },
 
     data() {
@@ -171,6 +172,9 @@
         } else {
           this.json = newVal
         }
+      },
+      type(newVal, oldVa){
+        if(this.type=='' && this.onEmpty) this.onEmpty();
       }
     },
 

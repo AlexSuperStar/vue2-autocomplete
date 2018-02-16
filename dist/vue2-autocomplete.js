@@ -286,7 +286,8 @@ if (false) {(function () {
     onBeforeAjax: Function,
     onAjaxProgress: Function,
     onAjaxLoaded: Function,
-    onShouldGetData: Function
+    onShouldGetData: Function,
+    onEmpty: Function
   },
 
   data: function data() {
@@ -315,6 +316,9 @@ if (false) {(function () {
       } else {
         this.json = newVal;
       }
+    },
+    type: function (newVal, oldVa){
+      if(this.type=='' && this.onEmpty) this.onEmpty();
     }
   },
 
